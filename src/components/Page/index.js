@@ -1,5 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import { createStore } from 'redux';
+
+import {getik, sayNo} from '../../actions/PageActions';
 
 export default class Page extends Component {
   constructor(props) {
@@ -7,15 +11,19 @@ export default class Page extends Component {
     this.OnYearBtnClick = this.OnYearBtnClick.bind(this);
   }
 
+  componentWillMount() {
+
+  }
+
   OnYearBtnClick() {
-    this.props.setYear(2017);
+    this.props.getik();
   }
 
   render() {
     const {year} = this.props;
     return <div>
       <p>Year {year}</p>
-      <button onClick={this.OnYearBtnClick}>0505</button>
+      <button onClick={this.OnYearBtnClick}>button</button>
     </div>
   }
 }

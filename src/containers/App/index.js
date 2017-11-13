@@ -1,33 +1,32 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
-import logo from './logo.svg';
 import './index.css';
-import User from '../../components/User/';
-import Page from '../../components/Page/';
 import * as pageActions from '../../actions/PageActions';
+import Navbar from '../../components/Navbar/index';
+import Content from '../../components/Content/index';
 
 class App extends Component {
+  componentWillMount() {
+    console.log(this.props)
+  }
   render() {
     const { user, page } = this.props;
-    const { setYear } = this.props.pageActions;
-
+    const { setYear, sayNo, getik } = this.props.pageActions;
     return (
+
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <User name={user.name} surname={user.surname} age={user.age}/>
-          <Page year={page.year} setYear={setYear}/>
-        </header>
+        <Navbar/>
+        <Content/>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = store => {
   return {
-    user: state.user,
-    page: state.page
+    user: store.user,
+    page: store.page,
   }
 };
 
@@ -36,5 +35,12 @@ const mapDispatchToProps = dispatch => {
     pageActions: bindActionCreators(pageActions, dispatch)
   }
 }
-
+// https://github.com/rajdee/redux-in-russian/blob/master/docs/api/bindActionCreators.md
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// <div className="App">
+//<header className="App-header">
+//  <User name={user.name} surname={user.surname} age={user.age}/>
+//  <Page year={page.year} setYear={setYear} sayNo={sayNo} getik={getik}/>
+//</header>
+//</div>
