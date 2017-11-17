@@ -18,13 +18,11 @@ const pageSwitcher = (page) => {
 
 class Content extends Component {
   render() {
-    const {page} = this.props;
     return (
       <div className="content">
         <Typography type="title" gutterBottom>
-          {page}
+          page
         </Typography>
-        {pageSwitcher(page)}
       </div>
     );
   }

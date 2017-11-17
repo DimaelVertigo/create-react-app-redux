@@ -1,7 +1,7 @@
 import {SHOW_USERS, SHOW_SERVERS} from '../constants/Page/';
 
 const initialState = {
-  page: 'start state'
+  location: 'start state'
 };
 
 export default function page(state = initialState, action) {

@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
+
+import * as pageActions from '../../actions/PageActions';
+
 import Navbar from '../../components/Navbar/';
 import Content from '../../components/Content/';
 
 import {Grid, AppBar, Toolbar} from 'material-ui';
 import Drawer from 'material-ui/Drawer';
 
-export default class Page extends Component {
+class Page extends Component {
 
   render() {
-    const {page} = this.props.page;
-    const {showUsers, showServers} = this.props.pageActions;
+    const page = this.props.page;
+    const actions = this.props.pageActions;
+
     return (
       <Grid container spacing={0}>
         <AppBar position="static" color="primary">
@@ -24,7 +31,7 @@ export default class Page extends Component {
         </AppBar>
         <Grid item md={3} lg={2}>
           <Drawer type="permanent" className="drawer">
-            <Navbar showUsers={showUsers} showServers={showServers} />
+            <Navbar actions={actions}/>
           </Drawer>
         </Grid>
         <Grid item md={9} lg={10}>
@@ -38,3 +45,16 @@ export default class Page extends Component {
 Page.propTypes = {
   page: PropTypes.object.isRequired
 };
+
+const mapStateToProps = store => {
+  return {
+    page: store.page
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    pageActions: bindActionCreators(pageActions, dispatch)
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Page);

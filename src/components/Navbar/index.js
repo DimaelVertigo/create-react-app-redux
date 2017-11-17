@@ -7,23 +7,23 @@ import ListSubheader from 'material-ui/List/ListSubheader';
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.showServers = this.showServers.bind(this);
-    this.showUsers = this.showUsers.bind(this);
+    this.goToServers = this.goToServers.bind(this);
+    this.goToUsers = this.goToUsers.bind(this);
   }
-  showServers() {
-    this.props.showServers();
+  goToServers() {
+    this.props.actions.showServers();
   }
-  showUsers() {
-    this.props.showUsers();
+  goToUsers() {
+    this.props.actions.showUsers();
   }
   render() {
     return (
       <div className="Navbar">
         <List subheader={<ListSubheader>Version: 13533</ListSubheader>}>
-          <ListItem button onClick={this.showServers} >
+          <ListItem button onClick={this.goToServers} >
             <ListItemText primary="Users"/>
           </ListItem>
-          <ListItem button onClick={this.showUsers}>
+          <ListItem button onClick={this.goToUsers}>
             <ListItemText primary="Active User Scans"/>
           </ListItem>
           <ListItem button>
