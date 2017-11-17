@@ -1,0 +1,14 @@
+.auth {
+	position: relative;
+	top: 50%;
+}
+.auth-head {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+}
+.auth-links {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-around;
+}

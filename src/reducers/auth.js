@@ -1,7 +1,7 @@
 const initialState = {
-  name: 'Василий',
-  surname: 'Реактов',
-  age: 27
+  auth: {
+    initAuth: false
+  }
 };
 
 export default function userstate(state = initialState) {

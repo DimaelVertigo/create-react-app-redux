@@ -1,97 +1,81 @@
 import React, {Component} from 'react';
 import './index.css';
 
+import List, {ListItem, ListItemText} from 'material-ui/List';
+import ListSubheader from 'material-ui/List/ListSubheader';
+
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.showServers = this.showServers.bind(this);
+    this.showUsers = this.showUsers.bind(this);
+  }
+  showServers() {
+    this.props.showServers();
+  }
+  showUsers() {
+    this.props.showUsers();
+  }
   render() {
     return (
       <div className="Navbar">
-        <div className="navbar-header">
-          <div className="navbar-header__logo">
-            <a href="index.html">
-              <img src="https://www.comodo.com/images/comodo-logo.png" alt="Comodo Logo"/>
-            </a>
-          </div>
-        </div>
-        <ul className="nav-list">
-          <li className="nav-list__item"><i></i>
-            <a href="">Users</a>
-          </li>
-          <li className="nav-list__item"><i></i>
-            <a href="">Active User Scans</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Daily Scan Settings</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Excluded Plugins</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Servers For License</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">GeoLocation</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Scan Count</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Trust Logo Status</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">System Settings</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">False Positives</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Pack Reports</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Logging</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Schedule Tasks</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Plugin Outputs for special notes</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Servers</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Test Services</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Plugin Groups</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Automatic failure</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Import merchants</a>
-          </li>
-          <li className="nav-list__item">
-            <i></i>
-            <a href="">Reload branding content</a>
-          </li>
-        </ul>
+        <List subheader={<ListSubheader>Version: 13533</ListSubheader>}>
+          <ListItem button onClick={this.showServers} >
+            <ListItemText primary="Users"/>
+          </ListItem>
+          <ListItem button onClick={this.showUsers}>
+            <ListItemText primary="Active User Scans"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Servers For License"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="GeoLocation"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Scan Count"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Trust Logo Status"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="System Settings"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="False Positives"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Pack Reports"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Logging"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Schedule Tasks"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Plugin Outputs for special notes"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Servers"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Test Services"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Plugin Groups"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Automatic failure"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Import merchants"/>
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Reload branding content"/>
+          </ListItem>
+        </List>
+
       </div>
     );
   }

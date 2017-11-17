@@ -1,23 +1,11 @@
-import {SET_YEAR} from '../constants/Page/';
+import {SHOW_SERVERS, SHOW_USERS} from '../constants/Page/';
 
-export const setYear = year => {
-  return {
-    type: SET_YEAR,
-    payload: year + 3000
-  };
-}
-export const sayNo = increment => {
-  return {
-    type: SET_YEAR,
-    payload: increment
-  };
-}
+export const showServers = () => ({
+  type: SHOW_SERVERS,
+  page: 'servers'
+});
+export const showUsers = () => ({
+  type: SHOW_USERS,
+  page: 'users'
+});
 
-export const getik = () => {
-  return {
-    type: 'GETIK',
-    payload: {
-      username: 'Dima', state: 'male'
-    }
-  }
-}

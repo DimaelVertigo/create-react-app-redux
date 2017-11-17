@@ -1,45 +1,6 @@
-.Navbar {
-	background-color: #2d323e;
-	width: 256px;
-	display: flex;
-	flex-direction: column;
-	width: 256px;
-	min-width: 256px;
-	max-width: 256px;
-	overflow-y: auto;
-	overflow-x: hidden;
-	z-index: 4;
-	box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
-	transition: all .3s cubic-bezier(.55,0,.55,.2),width .1s linear,min-width .1s linear,max-width .1s linear;
-	-webkit-transform: translateX(0);
-	transform: translateX(0);
+.drawer > div {
+	position: relative;
 }
-
-.navbar-header {
-	display: flex;
-	padding: 0 16px 0 24px;
-	height: 64px;
-	min-height: 64px;
-	justify-content: space-between;
-	transition: padding .2s ease;
-	background-color: hsla(0,0%,100%,.05);
-	box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-}
-.navbar-header__logo {
-	display: flex;
-	align-items: center;
-}
-
-.nav-list {}
-.nav-list__item {}
-.nav-list__item a {
-	display: flex;
-	align-items: center;
-	font-size: 1.4rem;
-	cursor: pointer;
-	color: #fff;
-	text-decoration: none;
-	text-transform: capitalize;
-	padding: 0 24px;
-	height: 48px;
+.drawer li:hover {
+	background-color: rgba(33, 150, 243, 0.12) !important;
 }
