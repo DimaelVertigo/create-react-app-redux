@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {Provider} from 'react-redux';
 import App from './containers/App/';
-import Page from './components/Page/';
 import registerServiceWorker from './registerServiceWorker';
 
 import configureStore from './store/configureStore/';
+
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
+
+const history = createHistory();
 
 const store = configureStore();
 /**
@@ -16,7 +20,9 @@ const store = configureStore();
  */
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <ConnectedRouter history={history}>
+      <App/>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
