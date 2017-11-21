@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './index.css';
+import Page from '../../components/Page/';
 
-import Page from '../../components/Page/'
-import Auth from '../../components/Auth/'
+import {Link} from 'react-router-dom';
 
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
@@ -20,9 +20,9 @@ class App extends Component {
     return (
       <div className="App">
         <MuiThemeProvider theme={theme}>
+          <br/>
+          <br/>
 
-          <Auth auth={this.props.auth}/>
-          <Page/>
         </MuiThemeProvider>
       </div>
     );

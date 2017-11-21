@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b7f56426-b92c-43b3-acb2-cd85203a78bb" name="hg" url="http://newdev-hg.das.comodo.od.ua">
+        <fileTransfer host="newdev-hg.das.comodo.od.ua" port="22" rootFolder="/opt/apache-tomcat-8.5.23/webapps/scan-manager/static" accessType="SFTP" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
