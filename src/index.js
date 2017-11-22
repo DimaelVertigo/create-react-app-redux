@@ -17,11 +17,6 @@ import {Route} from 'react-router';
 const history = createHistory();
 const store = configureStore();
 
-/**
- * Provider
- *
- * “Благодаря этому компоненту, мы сможем получать необходимые данные из store нашего приложения, если воспользуемся вспомогательной функцией connect”
- */
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

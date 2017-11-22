@@ -1,19 +1,17 @@
 /* eslint-disable flowtype/require-valid-file-annotation */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import logo from './logo_sas.gif';
+
 import { withStyles } from 'material-ui/styles';
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Divider from 'material-ui/Divider';
+import {Drawer, AppBar, Toolbar, Typography, Divider} from 'material-ui';
 
 import Navbar from '../Navbar/';
-import Content from '../Content/';
+import Servers from '../Servers/index';
 
 import {Route} from 'react-router';
+import {Link} from 'react-router-dom';
 
 
 const drawerWidth = 240;
@@ -63,7 +61,6 @@ const styles = theme => ({
 
 class PermanentDrawer extends React.Component {
 
-
   render() {
     const { classes } = this.props;
 
@@ -86,9 +83,9 @@ class PermanentDrawer extends React.Component {
             }}
           >
             <div className={classes.drawerHeader}>
-              <Typography type="title" gutterBottom>
-                Scan Manager
-              </Typography>
+              <Link to="/">
+                <img src={logo} alt="Sas logo" width="90%"/>
+              </Link>
             </div>
             <Divider />
             <Navbar/>
@@ -97,7 +94,7 @@ class PermanentDrawer extends React.Component {
 
           <main className={classes.content}>
             <Typography type="body1">
-              <Route path="/page/content" component={Content}/>
+              <Route path="/page/content" component={Servers}/>
             </Typography>
           </main>
         </div>
@@ -105,9 +102,5 @@ class PermanentDrawer extends React.Component {
     );
   }
 }
-
-PermanentDrawer.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(PermanentDrawer);
