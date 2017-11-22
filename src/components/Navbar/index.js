@@ -3,12 +3,8 @@ import './index.css';
 
 import List, {ListItem, ListItemText} from 'material-ui/List';
 import ListSubheader from 'material-ui/List/ListSubheader';
-import Typography from 'material-ui/Typography';
-
-import Content from '../Content/'
 
 import {Link} from 'react-router-dom';
-import {Router, Route} from 'react-router';
 
 class Navbar extends Component {
   constructor(props) {
@@ -30,7 +26,7 @@ class Navbar extends Component {
       <div className="Navbar">
         <List subheader={<ListSubheader>Version: 13533</ListSubheader>}>
           <ListItem button>
-            <Link to="/page/servers">
+            <Link to="/page/content">
               <ListItemText primary="Servers" />
             </Link>
           </ListItem>

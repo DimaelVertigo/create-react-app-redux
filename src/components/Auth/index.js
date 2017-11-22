@@ -8,8 +8,6 @@ class Auth extends Component {
   render() {
     return (
       <div className="auth">
-
-
         <Grid container spacing={0} justify="center" alignContent="center">
           <Grid item xs={12} md={5}>
             <div className="auth-head">
@@ -18,7 +16,7 @@ class Auth extends Component {
             <AppBar position="static" color="primary">
               <Toolbar>
                 <Typography type="title" color="inherit">
-                  Welcome to HackerGuardian
+                  Welcome to Scan Manager
                 </Typography>
               </Toolbar>
             </AppBar>
