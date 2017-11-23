@@ -9,10 +9,10 @@ import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore/';
 
-import {ConnectedRouter} from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
-import {syncHistoryWithStore} from 'react-router-redux';
 import {Route} from 'react-router';
+import {ConnectedRouter} from 'react-router-redux';
+import {syncHistoryWithStore} from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
 const history = createHistory();
 const store = configureStore();

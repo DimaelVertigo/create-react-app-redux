@@ -2,6 +2,7 @@
   "name": "redux",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "material-ui": "^1.0.0-beta.20",
     "react": "^16.0.0",

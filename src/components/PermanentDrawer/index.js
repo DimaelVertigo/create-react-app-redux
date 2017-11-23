@@ -8,13 +8,13 @@ import { withStyles } from 'material-ui/styles';
 import {Drawer, AppBar, Toolbar, Typography, Divider} from 'material-ui';
 
 import Navbar from '../Navbar/';
-import Servers from '../Servers/index';
+import Servers from '../Servers/';
 
 import {Route} from 'react-router';
 import {Link} from 'react-router-dom';
 
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const styles = theme => ({
   root: {
@@ -70,9 +70,7 @@ class PermanentDrawer extends React.Component {
         <div className={classes.appFrame}>
           <AppBar className={classNames(classes.appBar)}>
             <Toolbar>
-              <Typography type="title" color="inherit" noWrap>
-                Content ...
-              </Typography>
+              title lf
             </Toolbar>
           </AppBar>
 
@@ -88,14 +86,14 @@ class PermanentDrawer extends React.Component {
               </Link>
             </div>
             <Divider />
+
             <Navbar/>
+
             <Divider />
           </Drawer>
 
           <main className={classes.content}>
-            <Typography type="body1">
-              <Route path="/page/content" component={Servers}/>
-            </Typography>
+            <Route path="/page/content" component={Servers}/>
           </main>
         </div>
       </div>
@@ -103,4 +101,9 @@ class PermanentDrawer extends React.Component {
   }
 }
 
+
 export default withStyles(styles)(PermanentDrawer);
+
+
+
+

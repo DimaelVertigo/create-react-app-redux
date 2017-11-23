@@ -14,6 +14,9 @@ import {Link} from 'react-router-dom';
 
 
 class App extends Component {
+  componentWillMount(){
+
+  }
   render() {
     const theme = createMuiTheme({
       palette: {
@@ -30,7 +33,7 @@ class App extends Component {
           <br/>
           <Link to="/page">page</Link>
           <Route exact path="/auth" component={Auth}/>
-          <Route exact path="/page" component={Page}/>
+          <Route path="/page" component={Page}/>
         </MuiThemeProvider>
       </div>
     );

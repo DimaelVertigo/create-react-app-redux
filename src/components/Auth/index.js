@@ -5,6 +5,21 @@ import logo from './comodo_logo.gif';
 import {Grid, Button, Typography, Toolbar, AppBar, FormControl, TextField} from 'material-ui';
 
 class Auth extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      login: '',
+      password: ''
+    };
+  }
+
+  handleInput(e){
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
   render() {
     return (
       <div className="auth">
@@ -21,6 +36,7 @@ class Auth extends Component {
               </Toolbar>
             </AppBar>
             <form className="form" noValidate autoComplete="off">
+              <span>{this.state.login}</span>
               <FormControl fullWidth>
                 <TextField
                   required
@@ -29,6 +45,9 @@ class Auth extends Component {
                   type="text"
                   autoComplete="name"
                   margin="normal"
+                  name="login"
+                  onChange={this.handleInput.bind(this)}
+                  value={this.state.login}
                 />
               </FormControl>
               <FormControl fullWidth>
@@ -39,10 +58,15 @@ class Auth extends Component {
                   type="password"
                   autoComplete="current-password"
                   margin="normal"
+                  name="password"
+                  onChange={this.handleInput.bind(this)}
+                  value={this.props.password}
                 />
               </FormControl>
               <FormControl>
-                <Button raised color="primary" className="login-button">
+                <Button raised color="primary"
+                        disabled={!(this.state.login && this.state.password)}
+                        className="login-button">
                   Login
                 </Button>
               </FormControl>

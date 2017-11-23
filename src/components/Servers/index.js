@@ -1,11 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-const Servers = (props) => {
-  return (
-    <div className="Servers">
-      Servers component
-    </div> 
-  );
-}
+class Servers extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount() {
+    console.log(this.props)
+  }
+  render() {
+    return (
+      <div className="Servers">
+        Servers component
+      </div>
+    );
+  }
+};
 
-export default Servers;
+const mapStateToProps = store => {
+  return {
+    page: store.page,
+    auth: store.auth
+  }
+};
+
+export default connect(mapStateToProps)(Servers);
