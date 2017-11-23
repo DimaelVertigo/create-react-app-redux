@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import EnhancedTable from '../Table/'
 
 class Servers extends Component {
   constructor(props) {
     super(props);
   }
-  componentWillMount() {
-    console.log(this.props)
-  }
   render() {
     return (
       <div className="Servers">
-        Servers component
+        <EnhancedTable/>
       </div>
     );
   }
@@ -20,7 +18,8 @@ class Servers extends Component {
 const mapStateToProps = store => {
   return {
     page: store.page,
-    auth: store.auth
+    auth: store.auth,
+    store: store
   }
 };
 

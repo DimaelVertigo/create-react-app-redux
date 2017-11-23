@@ -9,6 +9,7 @@ import {Drawer, AppBar, Toolbar, Typography, Divider} from 'material-ui';
 
 import Navbar from '../Navbar/';
 import Servers from '../Servers/';
+import Title from '../Title/';
 
 import {Route} from 'react-router';
 import {Link} from 'react-router-dom';
@@ -70,7 +71,7 @@ class PermanentDrawer extends React.Component {
         <div className={classes.appFrame}>
           <AppBar className={classNames(classes.appBar)}>
             <Toolbar>
-              title lf
+              <Route component={Title}/>
             </Toolbar>
           </AppBar>
 
@@ -93,13 +94,21 @@ class PermanentDrawer extends React.Component {
           </Drawer>
 
           <main className={classes.content}>
-            <Route path="/page/content" component={Servers}/>
+            <Route path="/page/servers" component={Servers}/>
           </main>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = store => {
+  return {
+    page: store.page,
+    auth: store.auth,
+    store: store
+  }
+};
 
 
 export default withStyles(styles)(PermanentDrawer);

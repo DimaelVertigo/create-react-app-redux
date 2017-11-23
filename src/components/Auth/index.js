@@ -24,7 +24,7 @@ class Auth extends Component {
     return (
       <div className="auth">
         <Grid container spacing={0} justify="center" alignContent="center">
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={5} lg={3}>
             <div className="auth-head">
               <a href="index.html"><img src={logo} alt="Comodo Logo"/></a>
             </div>

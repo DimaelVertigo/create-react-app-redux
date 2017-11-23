@@ -26,7 +26,7 @@ class Navbar extends Component {
       <div className="Navbar">
         <List subheader={<ListSubheader>Version: 13533</ListSubheader>}>
           <ListItem button>
-            <Link to="/page/content">
+            <Link to="/page/servers">
               <ListItemText primary="Servers" />
             </Link>
           </ListItem>
