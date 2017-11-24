@@ -7,6 +7,7 @@ import {Grid, Button, Typography, Toolbar, AppBar, FormControl, TextField} from 
 class Auth extends Component {
   constructor(props) {
     super(props);
+    this.logIn = this.logIn.bind(this);
 
     this.state = {
       login: '',
@@ -20,23 +21,30 @@ class Auth extends Component {
       [e.target.name]: e.target.value
     });
   }
-  logIn() {
-    return fetch('http://newdev-hg.das.comodo.od.ua:8080/scan-manager/login', {
-      method: 'post',
-      headers: {
-        'Accept-Encoding': 'gzip,deflate',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        'username': 'rossy',
-        'password': 'test'
-      })
-    })
-    .then(result => {
-        return result.json();
-      }).then(data => {
-        console.log(data)
-      })
+
+  logIn(user) {
+    // return fetch('http://newdev-hg.das.comodo.od.ua:8080/scan-manager/login', {
+    //   method: 'post',
+    //   headers: {
+    //     'Accept-Encoding': 'gzip,deflate',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     'username': 'rossy',
+    //     'password': 'test'
+    //   })
+    // })
+    // .then(result => {
+    //     return result.json();
+    //   }).then(data => {
+    //     console.log(data);
+    //     return data;
+    //   })
+
+    return {
+      error: null,
+      token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NzeSIsInVzZXJJZ…WnFXIBgZ3QBNLYDiBgmFOMv6qof7f-0BubMSNZca0F9QdbMeg"
+    }
   }
   render() {
     return (
@@ -58,6 +66,7 @@ class Auth extends Component {
               <FormControl fullWidth>
                 <TextField
                   required
+                  autoFocus
                   id="username"
                   label="Username"
                   type="text"
@@ -85,7 +94,7 @@ class Auth extends Component {
                 <Button raised color="primary"
                         disabled={!(this.state.login && this.state.password)}
                         className="login-button"
-                        onClick={this.logIn.bind(this)}>
+                        onClick={this.logIn}>
                   Login
                 </Button>
               </FormControl>
@@ -106,3 +115,7 @@ class Auth extends Component {
 }
 
 export default Auth;
+
+// {error: null, token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NzeSIsInVzZXJJZ…WnFXIBgZ3QBNLYDiBgmFOMv6qof7f-0BubMSNZca0F9QdbMeg"}
+
+// {error: "Bad credentials", token: null}
