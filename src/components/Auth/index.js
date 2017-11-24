@@ -14,11 +14,29 @@ class Auth extends Component {
     };
   }
 
-  handleInput(e){
+  handleInput(e) {
     e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
     });
+  }
+  logIn() {
+    return fetch('http://newdev-hg.das.comodo.od.ua:8080/scan-manager/login', {
+      method: 'post',
+      headers: {
+        'Accept-Encoding': 'gzip,deflate',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'username': 'rossy',
+        'password': 'test'
+      })
+    })
+    .then(result => {
+        return result.json();
+      }).then(data => {
+        console.log(data)
+      })
   }
   render() {
     return (
@@ -66,7 +84,8 @@ class Auth extends Component {
               <FormControl>
                 <Button raised color="primary"
                         disabled={!(this.state.login && this.state.password)}
-                        className="login-button">
+                        className="login-button"
+                        onClick={this.logIn.bind(this)}>
                   Login
                 </Button>
               </FormControl>
