@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import logo from './logo_sas.gif';
 
 import { withStyles } from 'material-ui/styles';
-import {Drawer, AppBar, Toolbar, Typography, Divider} from 'material-ui';
+import {Drawer, AppBar, Toolbar, Divider} from 'material-ui';
 
 import Navbar from '../Navbar/';
 import Servers from '../Servers/';
@@ -101,14 +101,14 @@ class PermanentDrawer extends React.Component {
     );
   }
 }
-
-const mapStateToProps = store => {
-  return {
-    page: store.page,
-    auth: store.auth,
-    store: store
-  }
-};
+//
+// const mapStateToProps = store => {
+//   return {
+//     page: store.page,
+//     auth: store.auth,
+//     store: store
+//   }
+// };
 
 
 export default withStyles(styles)(PermanentDrawer);

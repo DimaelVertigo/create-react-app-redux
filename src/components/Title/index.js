@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './index.css';
-import {Drawer, AppBar, Toolbar, Typography, Divider} from 'material-ui';
+import {Typography} from 'material-ui';
 
 
 class Title extends Component {

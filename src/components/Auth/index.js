@@ -1,18 +1,33 @@
 import React, {Component} from 'react';
 import './index.css';
 import logo from './comodo_logo.gif';
+import {url, apiLogin} from '../../config/data';
 
-import {Grid, Button, Typography, Toolbar, AppBar, FormControl, TextField} from 'material-ui';
+import {
+  Grid,
+  Button,
+  Typography,
+  Toolbar,
+  AppBar,
+  FormControl,
+  TextField
+} from 'material-ui';
 
 class Auth extends Component {
   constructor(props) {
     super(props);
-    this.logIn = this.logIn.bind(this);
+    this.loginRequest = this.loginRequest.bind(this);
+    this.loginStatus = this.loginStatus.bind(this);
 
     this.state = {
-      login: '',
-      password: ''
+      username: '',
+      password: '',
+      isAuthentificated: '',
+      message: ''
     };
+  }
+
+  componentDidMount() {
   }
 
   handleInput(e) {
@@ -22,35 +37,52 @@ class Auth extends Component {
     });
   }
 
-  logIn(user) {
-    // return fetch('http://newdev-hg.das.comodo.od.ua:8080/scan-manager/login', {
-    //   method: 'post',
-    //   headers: {
-    //     'Accept-Encoding': 'gzip,deflate',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     'username': 'rossy',
-    //     'password': 'test'
-    //   })
-    // })
-    // .then(result => {
-    //     return result.json();
-    //   }).then(data => {
-    //     console.log(data);
-    //     return data;
-    //   })
+  loginRequest() {
+    return fetch(url + apiLogin, {
+      method: 'post',
+      headers: {
+        'Accept-Encoding': 'gzip,deflate',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        // this.state
+        {'username': 'rossy', 'password': 'test'}
+      )
+    })
+    .then(result => {
+        return result.json();
+      }).then(data => {
+        this.loginStatus(data)
+        return data;
+      })
+    // this.loginStatus({error: null, token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NzeSIsInVzZXJJZ…WnFXIBgZ3QBNLYDiBgmFOMv6qof7f-0BubMSNZca0F9QdbMeg"});
+    //
+    // return {error: 'Bad credentials', token: null};
 
-    return {
-      error: null,
-      token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NzeSIsInVzZXJJZ…WnFXIBgZ3QBNLYDiBgmFOMv6qof7f-0BubMSNZca0F9QdbMeg"
-    }
+    // return {error: null, token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NzeSIsInVzZXJJZ…WnFXIBgZ3QBNLYDiBgmFOMv6qof7f-0BubMSNZca0F9QdbMeg"}
   }
+
+  loginStatus(answer) {
+    if (answer.error) {
+      this.setState({
+        isAuthentificated: false,
+        message: 'Type correct name or password'
+      });
+    } else {
+      this.setState({
+        isAuthentificated: true,
+      });
+      localStorage.setItem('token', answer.token);
+      this.props.history.push('/redux/page');
+    }
+
+  }
+
   render() {
     return (
       <div className="auth">
         <Grid container spacing={0} justify="center" alignContent="center">
-          <Grid item xs={12} md={5} lg={3}>
+          <Grid item xs={7} md={5} lg={3}>
             <div className="auth-head">
               <a href="index.html"><img src={logo} alt="Comodo Logo"/></a>
             </div>
@@ -62,7 +94,8 @@ class Auth extends Component {
               </Toolbar>
             </AppBar>
             <form className="form" noValidate autoComplete="off">
-              <span>{this.state.login}</span>
+
+
               <FormControl fullWidth>
                 <TextField
                   required
@@ -72,9 +105,9 @@ class Auth extends Component {
                   type="text"
                   autoComplete="name"
                   margin="normal"
-                  name="login"
+                  name="username"
                   onChange={this.handleInput.bind(this)}
-                  value={this.state.login}
+                  value={this.state.username}
                 />
               </FormControl>
               <FormControl fullWidth>
@@ -92,13 +125,22 @@ class Auth extends Component {
               </FormControl>
               <FormControl>
                 <Button raised color="primary"
-                        disabled={!(this.state.login && this.state.password)}
                         className="login-button"
-                        onClick={this.logIn}>
+                        onClick={this.loginRequest}>
                   Login
                 </Button>
               </FormControl>
             </form>
+            {
+              this.state.message &&
+              <Typography
+                gutterBottom
+                noWrap
+                className="auth__message"
+                align="center">
+                {this.state.message}
+              </Typography>
+            }
             <div className="auth-links">
               <Button href="#" color="accent">
                 Forgot Password
@@ -119,3 +161,7 @@ export default Auth;
 // {error: null, token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NzeSIsInVzZXJJZ…WnFXIBgZ3QBNLYDiBgmFOMv6qof7f-0BubMSNZca0F9QdbMeg"}
 
 // {error: "Bad credentials", token: null}
+
+// disabled={!(this.state.login && this.state.password)}
+
+

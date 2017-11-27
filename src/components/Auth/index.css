@@ -12,3 +12,8 @@
 	display: flex;
 	justify-content: space-around;
 }
+
+.auth__message {
+	padding: 16px 0;
+	color: #ff4081 !important;
+}
