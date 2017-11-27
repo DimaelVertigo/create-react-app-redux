@@ -6,10 +6,13 @@ class Servers extends Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    // console.log(localStorage)
+  }
   render() {
     return (
       <div className="Servers">
-        <EnhancedTable/>
+        Fuck
       </div>
     );
   }
@@ -24,3 +27,6 @@ const mapStateToProps = store => {
 };
 
 export default connect(mapStateToProps)(Servers);
+
+
+// <EnhancedTable/>

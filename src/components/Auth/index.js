@@ -45,8 +45,8 @@ class Auth extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(
-        // this.state
-        {'username': 'rossy', 'password': 'test'}
+        this.state
+        // {'username': 'rossy', 'password': 'test'}
       )
     })
     .then(result => {
@@ -55,11 +55,6 @@ class Auth extends Component {
         this.loginStatus(data)
         return data;
       })
-    // this.loginStatus({error: null, token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NzeSIsInVzZXJJZ…WnFXIBgZ3QBNLYDiBgmFOMv6qof7f-0BubMSNZca0F9QdbMeg"});
-    //
-    // return {error: 'Bad credentials', token: null};
-
-    // return {error: null, token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NzeSIsInVzZXJJZ…WnFXIBgZ3QBNLYDiBgmFOMv6qof7f-0BubMSNZca0F9QdbMeg"}
   }
 
   loginStatus(answer) {
@@ -126,6 +121,7 @@ class Auth extends Component {
               <FormControl>
                 <Button raised color="primary"
                         className="login-button"
+                        disabled={!(this.state.username && this.state.password)}
                         onClick={this.loginRequest}>
                   Login
                 </Button>
@@ -162,6 +158,6 @@ export default Auth;
 
 // {error: "Bad credentials", token: null}
 
-// disabled={!(this.state.login && this.state.password)}
+// disabled={!(this.state.username && this.state.password)}
 
 

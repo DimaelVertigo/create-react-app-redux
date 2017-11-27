@@ -14,7 +14,6 @@ import {Route} from 'react-router';
 import {Link} from 'react-router-dom';
 
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +23,7 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
     console.log(localStorage)
+    console.log(token)
     return fetch(url + apiGetList, {
       method: 'get',
       headers: {
@@ -31,8 +31,11 @@ class App extends Component {
         'token': token
       }
     })
-      .then( _ => {
+      .then(result => {
+        return result.json();
+      }).then(data => {
         this.props.history.push('/redux/page');
+        return data;
       })
       .catch( _ => {
         this.props.history.push('/redux/auth');
