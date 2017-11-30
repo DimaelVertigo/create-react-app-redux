@@ -17,9 +17,6 @@ class Servers extends Component {
   }
 
   componentDidMount() {
-  }
-
-  getList() {
     const token = localStorage.getItem('token');
     return fetch(url + apiGetList, {
       method: 'get',
@@ -35,6 +32,10 @@ class Servers extends Component {
         return data;
       })
       .catch(err => console.log(err));
+  }
+
+  getList() {
+
   }
 
   renderContent() {
