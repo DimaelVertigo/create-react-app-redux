@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import {path} from './config/data';
 
 import App from './containers/App/';
 
@@ -20,7 +21,7 @@ const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Route path="/" component={App}/>
+      <Route path={path} component={App}/>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')

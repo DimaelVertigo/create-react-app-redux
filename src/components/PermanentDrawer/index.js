@@ -3,6 +3,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import logo from './logo_sas.gif';
+import {path} from '../../config/data';
 
 import { withStyles } from 'material-ui/styles';
 import {Drawer, AppBar, Toolbar, Divider} from 'material-ui';
@@ -94,7 +95,7 @@ class PermanentDrawer extends React.Component {
           </Drawer>
 
           <main className={classes.content}>
-            <Route path="/page/servers" component={Servers}/>
+            <Route path={`${path}page`} component={Servers}/>
           </main>
         </div>
       </div>

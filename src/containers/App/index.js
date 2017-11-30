@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './index.css';
 
-import {url, apiGetList} from '../../config/data';
+import {path, url, apiGetList} from '../../config/data';
 
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
@@ -10,9 +10,8 @@ import blue from 'material-ui/colors/blue';
 import Auth from '../../components/Auth/';
 import Page from '../../components/Page/';
 
-import {Route} from 'react-router';
-import {Link} from 'react-router-dom';
-
+// import {Route} from 'react-router';
+import {Route, Link} from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -21,9 +20,12 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('---------------------- DEV ------------------------')
+    }
+
     const token = localStorage.getItem('token');
     console.log(localStorage)
-    console.log(token)
     return fetch(url + apiGetList, {
       method: 'get',
       headers: {
@@ -31,14 +33,11 @@ class App extends Component {
         'token': token
       }
     })
-      .then(result => {
-        return result.json();
-      }).then(data => {
-        this.props.history.push('/redux/page');
-        return data;
+      .then( _ => {
+        this.props.history.push('page');
       })
       .catch( _ => {
-        this.props.history.push('/redux/auth');
+        this.props.history.push('auth');
       });
   }
 
@@ -56,21 +55,22 @@ class App extends Component {
     return (
       <div className="App">
         <MuiThemeProvider theme={theme}>
-          <Link to="/">Home</Link>
-          <br/>
-          <Link to="/redux/auth">auth</Link>
-          <br/>
-          <Link to="/redux/page">page</Link>
-          <br/>
           <button onClick={this.cleanCookie}>cleanCookie</button>
-          <Route exact path="/redux/auth" component={Auth}/>
-          <Route path="/redux/page" component={Page}/>
+          <br/>
+          <br/>
+          <Link to={path}>Home</Link>
+          <br/>
+          <Link to={`${path}auth`}>auth</Link>
+          <br/>
+          <Link to={`${path}page`}>page</Link>
+          <br/>
+          <Route exact path={`${path}auth`} component={Auth}/>
+          <Route path={`${path}page`} component={Page}/>
         </MuiThemeProvider>
       </div>
     );
   }
 }
-
 
 const mapStateToProps = store => {
   return {

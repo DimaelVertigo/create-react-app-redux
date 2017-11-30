@@ -5,6 +5,7 @@ import List, {ListItem, ListItemText} from 'material-ui/List';
 import ListSubheader from 'material-ui/List/ListSubheader';
 
 import {Link} from 'react-router-dom';
+import {path} from '../../config/data';
 
 class Navbar extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Navbar extends Component {
       <div className="Navbar">
         <List subheader={<ListSubheader>Version: 13533</ListSubheader>}>
           <ListItem button>
-            <Link to="/page/servers">
+            <Link to={`${path}page/servers`}>
               <ListItemText primary="Servers" />
             </Link>
           </ListItem>

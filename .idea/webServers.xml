@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="cd8533dc-f5dd-4af8-91dd-3e934ccc59c0" name="static" url="http://newdev-hg.das.comodo.od.ua">
+        <fileTransfer host="newdev-hg.das.comodo.od.ua" port="22" rootFolder="/opt/comodo/hg_admin" accessType="SFTP" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './index.css';
 import logo from './comodo_logo.gif';
-import {url, apiLogin} from '../../config/data';
+import {path, url, apiLogin} from '../../config/data';
 
 import {
   Grid,
@@ -46,7 +46,7 @@ class Auth extends Component {
       },
       body: JSON.stringify(
         this.state
-        // {'username': 'rossy', 'password': 'test'}
+        // {"username": "rossy", "password": "test"}
       )
     })
     .then(result => {
@@ -55,6 +55,7 @@ class Auth extends Component {
         this.loginStatus(data)
         return data;
       })
+      .catch(error => {console.log(error)})
   }
 
   loginStatus(answer) {
@@ -68,7 +69,7 @@ class Auth extends Component {
         isAuthentificated: true,
       });
       localStorage.setItem('token', answer.token);
-      this.props.history.push('/redux/page');
+      this.props.history.push(`${path}page`);
     }
 
   }
@@ -138,11 +139,17 @@ class Auth extends Component {
               </Typography>
             }
             <div className="auth-links">
-              <Button href="#" color="accent">
-                Forgot Password
+              <Button
+                href="https://secure.comodo.net/management/passwordResetRequest.html"
+                target="_blanck"
+                color="accent">
+                  Forgot Password
               </Button>
-              <Button href="#flat-buttons" color="primary">
-                get free license
+              <Button
+                href="https://www.hackerguardian.com/hackerguardian/buy/pci-free-scan.htmls"
+                target="_blanck"
+                color="primary">
+                  get free license
               </Button>
             </div>
           </Grid>
