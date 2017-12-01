@@ -4,10 +4,6 @@ import {Typography} from 'material-ui';
 
 
 class Title extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const location = this.props.location.pathname.split('/').pop();
     return (

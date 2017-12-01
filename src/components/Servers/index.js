@@ -3,17 +3,41 @@ import {connect} from 'react-redux';
 
 import {url, apiGetList} from '../../config/data';
 
-import EnhancedTable from '../Table/'
-
 class Servers extends Component {
   constructor(props) {
     super(props);
     this.getList = this.getList.bind(this);
-    this.renderContent = this.renderContent.bind(this);
 
     this.state = {
-      content: []
-    };
+      list: []
+    }
+  }
+
+  getList() {
+    const list = this.state.list;
+    if (list.length) {
+      const listItems = list.map((item, index) => {
+        return (
+          <li key={index}>
+            <div>{item.forLocalIp}</div>
+            <div>{item.nessusCertificatePath}</div>
+            <div>{item.nessusHost}</div>
+            <div>{item.nessusId}</div>
+            <div>{item.nessusLocationId}</div>
+            <div>{item.nessusLogin}</div>
+            <div>{item.nessusPassword}</div>
+            <div>{item.nessusPort}</div>
+            <div>{item.nessusScanningCapacity}</div>
+            <div>{item.scannerType}</div>
+          </li>
+        )
+      })
+      return (
+        <div>
+          {listItems}
+        </div>
+      );
+    }
   }
 
   componentDidMount() {
@@ -28,33 +52,18 @@ class Servers extends Component {
       .then(result => {
         return result.json();
       }).then(data => {
-        console.log(data)
+        this.setState({
+          list: [...data]
+        })
         return data;
       })
       .catch(err => console.log(err));
   }
 
-  getList() {
-
-  }
-
-  renderContent() {
-    let content = [];
-    // this.getList().then(response => {
-    //   console.log(response)
-    //   content = response.map(item => {
-    //     console.log(item)
-    //     return {name: item.nessusHost}
-    //   })
-    // })
-    // return content;
-  }
-
   render() {
-    // console.log(this.renderContent())
     return (
       <div className="Servers">
-        Servers table
+        {this.getList()}
       </div>
     );
   }

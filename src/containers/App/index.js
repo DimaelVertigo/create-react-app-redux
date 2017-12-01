@@ -26,19 +26,19 @@ class App extends Component {
 
     const token = localStorage.getItem('token');
     console.log(localStorage)
-    // return fetch(url + apiGetList, {
-    //   method: 'get',
-    //   headers: {
-    //     'Accept-Encoding': 'gzip,deflate',
-    //     'token': token
-    //   }
-    // })
-    //   .then( _ => {
-    //     this.props.history.push('page');
-    //   })
-    //   .catch( _ => {
-    //     this.props.history.push('auth');
-    //   });
+    return fetch(url + apiGetList, {
+      method: 'get',
+      headers: {
+        'Accept-Encoding': 'gzip,deflate',
+        'token': token
+      }
+    })
+      .then( _ => {
+        this.props.history.push('page');
+      })
+      .catch( _ => {
+        this.props.history.push('auth');
+      });
   }
 
   cleanCookie() {
