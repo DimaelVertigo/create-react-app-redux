@@ -3,6 +3,18 @@ import {connect} from 'react-redux';
 
 import {url, apiGetList} from '../../config/data';
 
+import Table, {
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TableSortLabel,
+} from 'material-ui/Table';
+import Tooltip from 'material-ui/Tooltip';
+import Paper from 'material-ui/Paper';
+
 class Servers extends Component {
   constructor(props) {
     super(props);
@@ -15,23 +27,40 @@ class Servers extends Component {
 
   getList() {
     const list = this.state.list;
+
+    const columnData = [
+      { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
+      { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
+      { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
+      { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
+      { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+    ];
+
     if (list.length) {
-      const listItems = list.map((item, index) => {
+      const listItems = list.map( (column, i) => {
+        console.log(column)
         return (
-          <li key={index}>
-            <div>{item.forLocalIp}</div>
-            <div>{item.nessusCertificatePath}</div>
-            <div>{item.nessusHost}</div>
-            <div>{item.nessusId}</div>
-            <div>{item.nessusLocationId}</div>
-            <div>{item.nessusLogin}</div>
-            <div>{item.nessusPassword}</div>
-            <div>{item.nessusPort}</div>
-            <div>{item.nessusScanningCapacity}</div>
-            <div>{item.scannerType}</div>
-          </li>
-        )
+          <Paper>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableCell key={i}>{column.nessusHost}</TableCell>
+                  <TableCell key={i}>{column.nessusPort}</TableCell>
+                  <TableCell key={i}>{column.nessusCertificatePath}</TableCell>
+                  <TableCell key={i}>{column.nessusId}</TableCell>
+                  <TableCell key={i}>{column.nessusLocationId}</TableCell>
+                  <TableCell key={i}>{column.nessusPassword}</TableCell>
+                  <TableCell key={i}>{column.nessusScanningCapacity}</TableCell>
+                  <TableCell key={i}>{column.scannerType}</TableCell>
+                  <TableCell key={i}>{column.forLocalIp}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </Paper>
+        );
       })
+
+
       return (
         <div>
           {listItems}
@@ -77,5 +106,30 @@ const mapStateToProps = store => {
   }
 };
 
+const ListItem = (props) => {
+  return <li>...</li>
+
+}
+
 export default connect(mapStateToProps)(Servers);
 
+{/*<div key={item.toString()}>{item.forLocalIp}</div>*/
+}
+{/*<div key={item.toString()}>{item.nessusCertificatePath}</div>*/
+}
+{/*<div key={item.toString()}>{item.nessusHost}</div>*/
+}
+{/*<div key={item.toString()}>{item.nessusId}</div>*/
+}
+{/*<div key={item.toString()}>{item.nessusLocationId}</div>*/
+}
+{/*<div key={item.toString()}>{item.nessusLogin}</div>*/
+}
+{/*<div key={item.toString()}>{item.nessusPassword}</div>*/
+}
+{/*<div key={item.toString()}>{item.nessusPort}</div>*/
+}
+{/*<div key={item.toString()}>{item.nessusScanningCapacity}</div>*/
+}
+{/*<div key={item.toString()}>{item.scannerType}</div>*/
+}
